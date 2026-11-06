@@ -23,9 +23,9 @@ void loop() {
   if (millis() - t > tiempopaquenorebote) {
     t = millis();
     if (digitalRead(PIN_DERECHA) == LOW) {
-      contador++;
+      contador += 20;
       if (contador > 9999) {
-        contador = 0;
+        contador -= 10000;
       }
       tm.display(0, contador / 1000);
       tm.display(1, (contador % 1000) / 100);
@@ -33,9 +33,9 @@ void loop() {
       tm.display(3, contador % 10);
     }
     if (digitalRead(PIN_IZQUIERDA) == LOW) {
-      contador--;
+      contador -= 20;
       if (contador < 0) {
-        contador = 9999;
+        contador += 10000;
       }
       tm.display(0, contador / 1000);
       tm.display(1, (contador % 1000) / 100);
